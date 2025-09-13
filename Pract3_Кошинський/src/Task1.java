@@ -13,16 +13,15 @@ import stanford.karel.SuperKarel;
 
 public class Task1 extends SuperKarel {
 	public void run(){
-		while (true){
+		clearRow();
+		goToStartFloor();
+		findThePyth();
+		while (leftIsClear()){
+			goToNextFloor();
+			goToStartFloor();
 			clearRow();
 			goToStartFloor();
 			findThePyth();
-			if (leftIsClear()){
-				goToNextFloor();
-				goToStartFloor();
-
-			}
-			else break;
 		}
 	}
 //moves on row and pick all beepers

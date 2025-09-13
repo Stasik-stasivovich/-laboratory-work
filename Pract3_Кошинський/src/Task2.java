@@ -6,16 +6,15 @@ import stanford.karel.SuperKarel;
 public class Task2 extends SuperKarel {
 	public void run(){
 		turnLeft();
-		while (true){
+		clearRow();
+		goToStartFloor();
+		findThePyth();
+		while (rightIsClear()){
+			goToNextFloor();
+			goToStartFloor();
 			clearRow();
 			goToStartFloor();
 			findThePyth();
-			if (rightIsClear()){
-				goToNextFloor();
-				goToStartFloor();
-
-			}
-			else break;
 		}
 		turnRight();
 	}
