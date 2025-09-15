@@ -41,7 +41,10 @@ public class Task1 extends SuperKarel {
 	}
 //moves on row and find entrance on next stage
 	private void findThePyth() {
-		while (leftIsBlocked()&&frontIsClear())move();
+		while (leftIsBlocked()){
+			if (frontIsClear())move();
+			else break;
+		}
 		
 	}
 //move to west side and look at east
