@@ -12,8 +12,10 @@ public class Task2 extends SuperKarel {
 	}
 
 	private void findThePyth() {
-		while (leftIsBlocked()&&frontIsClear())move();
-		
+		while (leftIsBlocked()){
+			if (frontIsClear())move();
+			else break;
+		}
 	}
 
 	private void goToStartFloor() {
