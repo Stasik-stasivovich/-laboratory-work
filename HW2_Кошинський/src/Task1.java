@@ -9,19 +9,18 @@ public class Task1 extends SuperKarel{
 	}
 
 	private void findDoorAndGoToNewspapaer() {
-		while(frontIsClear() && noBeepersPresent())move();
-		if (noBeepersPresent()){
-			turnRight();
-			findDoor();
-			turnLeft();
-			move();
-			
+		while (noBeepersPresent()){
+			if (frontIsClear()) move();
+			else findThePyth();
 		}
 	}
 
-	private void findDoor() {
-		while (leftIsBlocked())move();
-		
+	private void findThePyth() {
+		turnRight();
+		while (leftIsBlocked()){
+			move();
+		}
+		turnLeft();
 	}
 
 	private void goToSrartPosition() {
