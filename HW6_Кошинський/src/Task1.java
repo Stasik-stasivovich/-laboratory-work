@@ -27,10 +27,10 @@ import acm.program.GraphicsProgram;
 
 public class Task1 extends GraphicsProgram{
 	
-	private static final int WIDTH = 800;
-	private static final int HEIGHT = 800;
-	private static final double NUM_OF_COLUMNS=5;
-	private static final double NUM_OF_ROWS=13;
+	private static final int WIDTH = 700;
+	private static final int HEIGHT = 720;
+	private static final double NUM_OF_COLUMNS=115;
+	private static final double NUM_OF_ROWS=711;
 	public void run(){
 		setSize(WIDTH,HEIGHT);
 		if (NUM_OF_COLUMNS*NUM_OF_ROWS>0){

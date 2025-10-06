@@ -8,18 +8,16 @@
  */
 
 
-
-
 import java.awt.Color;
 import acm.graphics.GLine;
 import acm.program.GraphicsProgram;
 
 
 public class Task2 extends GraphicsProgram {
-	private static final double VERTICAL_RADIUS=15;
-	private static final double HORIZONTAL_RADIUS=15;
-	private static final int N_START=4;
-	private static final int DELTA_N=-1;
+	private static final double VERTICAL_RADIUS=25;
+	private static final double HORIZONTAL_RADIUS=25;
+	private static final int N_START=10;
+	private static final int DELTA_N=-2;
 	private static final double DELTA_X=50;
 	private static final double DELTA_Y=50;
 	private static final int HEIGHT=700;
@@ -27,7 +25,6 @@ public class Task2 extends GraphicsProgram {
 	private static final int START_X=10;
 	private static final int START_Y=20;
 	public void run(){
-		int j=0;
 		int nNow;
 		setSize(WIDTH,HEIGHT);
 		
@@ -42,29 +39,26 @@ public class Task2 extends GraphicsProgram {
 	//build column
 	private void buildColumn(int nNow,int numberOfColumn) {
 		Color color;
-		double x=START_X+HORIZONTAL_RADIUS+(HORIZONTAL_RADIUS*2+DELTA_X)*numberOfColumn;
-		for (int j=0;j<nNow;j++){
+		double x=START_X+HORIZONTAL_RADIUS+(HORIZONTAL_RADIUS*2+DELTA_X)*numberOfColumn;//координата центра біпера по x
+		int j=0;
+		double y=VERTICAL_RADIUS+1;
+		while (j<nNow&&y>=VERTICAL_RADIUS){
 			if (j%3==0)color =Color.ORANGE;
 			else if (j%3==1)color=Color.GREEN; 
 			else color= Color.BLUE;
-			double y=getHeight()-START_Y-VERTICAL_RADIUS-(2*VERTICAL_RADIUS+DELTA_Y)*j;
-			if (y<VERTICAL_RADIUS)break;
-			createBeeper(x,y,color);
-
+			y=getHeight()-START_Y-VERTICAL_RADIUS-(2*VERTICAL_RADIUS+DELTA_Y)*j;//координата центра біпера по y
+			if (y>VERTICAL_RADIUS)createBeeper(x,y,color);
+			j++;
 			
 		}
 		
 	}
 	//create beeper from coordinate and fill color(size is constant)
 	//tan for correct retreat
-	//deltai becose we have `white noise` if have step on 1
 	private void createBeeper(double x,double y,Color color){
 		double tan = VERTICAL_RADIUS/HORIZONTAL_RADIUS;
-		double deltaI;
-		if (tan>1)deltaI=1/tan;
-		else deltaI=tan;
-		for (double i=0;i<=HORIZONTAL_RADIUS;i+=(deltaI/2)){
-			GLine line = new GLine(x-i,y-VERTICAL_RADIUS+i*tan,x+HORIZONTAL_RADIUS-i,y+i*tan);
+		for (double i=-VERTICAL_RADIUS;i<VERTICAL_RADIUS;i+=0.5){
+			GLine line =new GLine(x-(Math.abs(i)-VERTICAL_RADIUS)/tan,y-i,x+(Math.abs(i)-VERTICAL_RADIUS)/tan,y-i);//рахуємо коордити ліній і створюєио їх
 			line.setColor(color);
 			add(line);
 		}
