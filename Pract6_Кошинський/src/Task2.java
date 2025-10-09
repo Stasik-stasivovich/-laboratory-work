@@ -83,7 +83,8 @@ public class Task2 extends ConsoleProgram{
 //solve y=x^4
 	private void solve1stExpression(double y) {
 		if (y<0) println("No Answer");
-		else println(Math.pow(y,0.25));
+		else if (y==0) println("Ansver- 0");
+		else println("Ansver-  +-"+Math.pow(y,0.25));
 		
 	}
 }

@@ -41,15 +41,13 @@ public class Task1 extends ConsoleProgram {
                 c=readDouble("c = ");
                 println(expression(x, a, b, c));
             }
-
-
         }
     }
 
     //øóêàºìî ìàêñèìàëüíå ñåğåä 4 ÷èñåë
     private static double maxFrom4Num(double a,double b,double c,double d){
-        if (a>b^a>c^a>d)return a;
-        if (b>c^b>d)return b;
+        if (a>b&&a>c&&a>d)return a;
+        if (b>c&&b>d)return b;
         if (c>d)return c;
         return d;
     }
